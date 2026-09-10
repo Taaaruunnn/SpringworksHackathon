@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Candidate Check Tracker</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Candidate Check Tracker</h1>
+    <p class="subtitle">Track BGV checks across candidates</p>
+    <div class="header-actions"><a href="/spec" target="_blank" rel="noopener" class="header-btn">📋 Spec</a><a href="/openapi.json" target="_blank" rel="noopener" class="header-btn">📥 API collection</a><button type="button" id="reset-data-btn" class="header-btn">↺ Reset data</button></div>
+  </header>
+
+  <div id="app-section">
+  <main>
+    <section class="panel">
+      <h2>Filters</h2>
+      <div class="filters">
+        <label>
+          Status
+          <select id="filter-status">
+            <option value="">All Statuses</option>
+            <option value="PENDING">Pending</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="VERIFIED">Verified</option>
+            <option value="DISCREPANCY">Discrepancy</option>
+            <option value="INSUFFICIENCY">Insufficiency</option>
+            <option value="CLOSED">Closed</option>
+          </select>
+        </label>
+        <label>
+          Type
+          <select id="filter-type">
+            <option value="">All Types</option>
+            <option value="IDENTITY">Identity</option>
+            <option value="EDUCATION">Education</option>
+            <option value="EMPLOYMENT">Employment</option>
+            <option value="ADDRESS">Address</option>
+          </select>
+        </label>
+        <label>
+          Candidate ID
+          <input type="text" id="filter-candidate-id" placeholder="e.g. 1" />
+        </label>
+        <button id="apply-filters">Apply Filters</button>
+        <button id="clear-filters" class="secondary">Clear</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Status Legend</h2>
+      <div id="status-legend" class="legend"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Add Check</h2>
+      <form id="add-check-form" class="inline-form">
+        <label>
+          Candidate
+          <select id="new-candidate-id">
+            <option value="1">Aditi Sharma (1)</option>
+            <option value="2">Rohan Mehta (2)</option>
+            <option value="3">Kavya Iyer (3)</option>
+            <option value="4">Arjun Nair (4)</option>
+          </select>
+        </label>
+        <label>
+          Type
+          <select id="new-type">
+            <option value="IDENTITY">Identity</option>
+            <option value="EDUCATION">Education</option>
+            <option value="EMPLOYMENT">Employment</option>
+            <option value="ADDRESS">Address</option>
+          </select>
+        </label>
+        <button type="button" id="add-check-btn">Add Check</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Checks</h2>
+      <table id="checks-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Candidate</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Update Status</th>
+          </tr>
+        </thead>
+        <tbody id="checks-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>window.SV_APP_ID='01';window.SV_SCOREBOARD='https://sv-qa-scoreboard.onrender.com';</script>
+  <script src="report-widget.js"></script>
+</body>
+</html>
